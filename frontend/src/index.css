@@ -1,0 +1,131 @@
+@import "tailwindcss";
+@import "./styles/globals.css";
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #020617;
+  color: #f8fafc;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow: hidden;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Glassmorphism Panels */
+.glass-panel {
+  background: rgba(8, 21, 43, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+}
+
+.glass-panel-hover {
+  transition: all 0.2s ease-in-out;
+}
+
+.glass-panel-hover:hover {
+  background: rgba(12, 33, 64, 0.85);
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 12px 40px 0 rgba(14, 165, 233, 0.25);
+}
+
+.glass-panel-active {
+  background: rgba(14, 45, 89, 0.9);
+  border-color: rgba(34, 211, 238, 0.7);
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.35);
+}
+
+/* Glowing Neon Elements */
+.glow-cyan {
+  text-shadow: 0 0 10px rgba(34, 211, 238, 0.7), 0 0 20px rgba(34, 211, 238, 0.4);
+}
+
+.glow-coral {
+  text-shadow: 0 0 10px rgba(244, 63, 94, 0.7), 0 0 20px rgba(244, 63, 94, 0.4);
+}
+
+.border-glow-cyan {
+  box-shadow: 0 0 15px rgba(34, 211, 238, 0.35);
+}
+
+/* Sci-Fi HUD Crosshair & Grids */
+.hud-grid-bg {
+  background-image: 
+    linear-gradient(rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Custom Sleek Dark Scrollbars */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Complete No-Scrollbar Utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+/* Pulse animation for Live sensors */
+@keyframes sensor-ping {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(34, 211, 238, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 211, 238, 0);
+  }
+}
+
+.sensor-pulse {
+  animation: sensor-ping 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Scientific Colormaps */
+.gradient-viridis {
+  background: linear-gradient(to right, #440154, #3b528b, #21918c, #5ec962, #fde725);
+}
+
+.gradient-thermal {
+  background: linear-gradient(to right, #000084, #0070c0, #00c000, #ffff00, #ff8000, #ff0000);
+}
+
+.gradient-salinity {
+  background: linear-gradient(to right, #2c7bb6, #abd9e9, #ffffbf, #fdae61, #d7191c);
+}
+
+.gradient-currents {
+  background: linear-gradient(to right, #050524, #00ffff, #00ff7f, #ffff00, #ff3b30);
+}

@@ -1,0 +1,245 @@
+/**
+ * AquaTwin 3D - Mission Control Globals
+ * High-precision typography, Government/Institutional design system, deep matte black theme.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Public+Sans:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg-base: #040508;
+  --panel-bg: rgba(12, 14, 20, 0.88);
+  --accent-cyan: #06b6d4;
+  --accent-teal: #0d9488;
+  --accent-emerald: #10b981;
+  --accent-amber: #f59e0b;
+  --accent-rose: #f43f5e;
+  --border-glass: rgba(255, 255, 255, 0.09);
+  --border-glass-hover: rgba(255, 255, 255, 0.22);
+  --font-header: 'Public Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Roboto Mono', 'JetBrains Mono', monospace;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-base);
+  color: #f1f5f9;
+  font-family: var(--font-header);
+  overflow: hidden;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Monospace font utility for numeric and telemetry readouts */
+.font-telemetry {
+  font-family: var(--font-mono);
+  font-feature-settings: 'tnum' on, 'zero' on;
+}
+
+.font-header {
+  font-family: var(--font-header);
+}
+
+/* Mission Control Glassmorphism Panel - Clean Dark Matte Carbon */
+.glass-mission {
+  background: var(--panel-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border-glass);
+  border-radius: 12px;
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-mission:hover {
+  border-color: var(--border-glass-hover);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* Animated Shifting Gradient Border (under TopNavBar) */
+@keyframes borderGlowShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-glow-shift {
+  background: linear-gradient(90deg, #00f2fe, #0891b2, #10b981, #0891b2, #00f2fe);
+  background-size: 300% 300%;
+  animation: borderGlowShift 8s ease infinite;
+}
+
+/* Sci-Fi HUD Viewport Corner Brackets [ ] */
+.hud-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  border-color: rgba(0, 242, 254, 0.55);
+}
+
+.hud-corner-tl {
+  top: 10px;
+  left: 10px;
+  border-top: 2px solid rgba(0, 242, 254, 0.6);
+  border-left: 2px solid rgba(0, 242, 254, 0.6);
+}
+
+.hud-corner-tr {
+  top: 10px;
+  right: 10px;
+  border-top: 2px solid rgba(0, 242, 254, 0.6);
+  border-right: 2px solid rgba(0, 242, 254, 0.6);
+}
+
+.hud-corner-bl {
+  bottom: 10px;
+  left: 10px;
+  border-bottom: 2px solid rgba(0, 242, 254, 0.6);
+  border-left: 2px solid rgba(0, 242, 254, 0.6);
+}
+
+.hud-corner-br {
+  bottom: 10px;
+  right: 10px;
+  border-bottom: 2px solid rgba(0, 242, 254, 0.6);
+  border-right: 2px solid rgba(0, 242, 254, 0.6);
+}
+
+/* Subtle Film Grain Noise Texture */
+.bg-noise-overlay {
+  background-image: radial-gradient(rgba(0, 242, 254, 0.04) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Pulse Scale Animation for Live Indicator Dots */
+@keyframes livePulseDot {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 0.7;
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+.animate-live-dot {
+  animation: livePulseDot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Shimmer gradient sweep for Skeleton loaders */
+@keyframes shimmerSweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(0, 242, 254, 0.08), transparent);
+  animation: shimmerSweep 1.8s infinite;
+}
+
+/* ==========================================================================
+   Apple iOS 18/26-Style Liquid Glass Material Layer
+   ========================================================================== */
+
+:root {
+  --liquid-blur: 18px;
+  --liquid-saturation: 190%;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+
+.liquid-glass-base {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(14, 16, 22, 0.88) 50%,
+    rgba(5, 6, 10, 0.95) 100%
+  );
+  backdrop-filter: blur(var(--liquid-blur)) saturate(140%) brightness(1.02);
+  -webkit-backdrop-filter: blur(var(--liquid-blur)) saturate(140%) brightness(1.02);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.15),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.45),
+    0 16px 40px 0 rgba(0, 0, 0, 0.65);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, backdrop-filter 0.25s ease;
+  overflow: hidden;
+}
+
+.liquid-glass-base:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 
+    inset 0 1.5px 2px rgba(255, 255, 255, 0.25),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.35),
+    0 20px 48px 0 rgba(0, 0, 0, 0.75);
+}
+
+/* Subtle SVG filter application for organic light bending */
+.liquid-filter-active {
+  filter: url(#liquid-glass-distortion);
+}
+
+/* Dynamic Interactive Mouse Light Reflection */
+.liquid-glass-reflection::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle 180px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.02) 40%,
+    transparent 80%
+  );
+  opacity: 0.75;
+  mix-blend-mode: screen;
+  transition: opacity 0.2s ease;
+}
+
+/* Color Tints */
+.liquid-tint-cyan {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.08) 0%, rgba(14, 16, 22, 0.90) 50%, rgba(5, 6, 10, 0.96) 100%);
+  border-color: rgba(6, 182, 212, 0.25);
+}
+
+.liquid-tint-emerald {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(14, 16, 22, 0.90) 50%, rgba(5, 6, 10, 0.96) 100%);
+  border-color: rgba(16, 185, 129, 0.25);
+}
+
+.liquid-tint-rose {
+  background: linear-gradient(135deg, rgba(244, 63, 94, 0.08) 0%, rgba(14, 16, 22, 0.90) 50%, rgba(5, 6, 10, 0.96) 100%);
+  border-color: rgba(244, 63, 94, 0.25);
+}
+
